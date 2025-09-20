@@ -10,7 +10,7 @@ export default function ImportJSONButton({
 }) {
   const importFileRef = useRef<HTMLInputElement | null>(null);
   const readJSONFile = (file?: File) => {
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<unknown>((resolve, reject) => {
       if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -37,7 +37,7 @@ export default function ImportJSONButton({
         accept=".json"
         onChange={(e) => {
           readJSONFile(e.target.files?.[0]).then((json) => {
-            onSuccess(json);
+            onSuccess(json as QuizSection[]);
           });
         }}
       />

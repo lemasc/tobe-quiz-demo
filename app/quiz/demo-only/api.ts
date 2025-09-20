@@ -8,8 +8,8 @@ export const gradeQuizSubmission = ({
   submission: Record<string, string>;
 }) => {
   let score = 0;
-  let corrected: Record<string, QuizItem | boolean> = {};
-  let incorrected: Record<
+  const corrected: Record<string, QuizItem | boolean> = {};
+  const incorrected: Record<
     string,
     | (QuizItem & {
         answered: QuizItem["choices"][number] | string | null;
