@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import "../editor-config";
 import QuizSectionComponent from "./components/QuizSection";
 import { UseQuizFormHook } from "../demo-only/hooks/useQuizForm";
+import { gradeQuizSubmission } from "../demo-only/api";
 
 export function QuizView({ form }: { form: UseQuizFormHook }) {
   const quiz = form.watch("sections");
@@ -27,6 +28,15 @@ export function QuizView({ form }: { form: UseQuizFormHook }) {
       // if this is in prod, maybe user hack path
     }
   }, [totalItems, router]);
+
+  const submitQuiz = () => {
+    const result = gradeQuizSubmission({
+      quizSections: quiz,
+      submission: answers,
+    });
+    alert(`You got ${result.score} of ${result.total}`);
+    console.log(Date.now(), result);
+  };
 
   return (
     <div className="w-full px-6 pr-8 space-y-6 md:space-y-8">
@@ -86,7 +96,7 @@ export function QuizView({ form }: { form: UseQuizFormHook }) {
             }
             if (confirm("ต้องการส่งคำตอบหรือไม่?")) {
               setIsInvalid(false);
-              //   submit();
+              submitQuiz();
             }
           }}
         >
