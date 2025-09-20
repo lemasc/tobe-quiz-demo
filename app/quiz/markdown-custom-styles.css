@@ -1,0 +1,66 @@
+@reference "tailwindcss";
+
+.quizMarkdown,
+.quizMarkdown.md-editor-modal-container {
+  --md-bk-color: transparent;
+  --md-color: inherit;
+}
+
+.quizMarkdown.md-editor {
+  font-family: inherit;
+}
+
+.quizMarkdown .md-editor-preview-wrapper {
+  padding: unset;
+}
+
+.quizMarkdown .md-editor-preview {
+  @apply space-y-3;
+  font-size: inherit;
+}
+
+.quizMarkdown .md-editor-preview p,
+.quizMarkdown .md-editor-preview li {
+  @apply break-words;
+  word-break: break-word;
+}
+
+.quizMarkdown .md-editor-preview p {
+  margin: 0;
+}
+
+.quizMarkdown:not(.examMarkdown) .md-editor-preview p {
+  @apply leading-8;
+}
+
+.quizMarkdown.examMarkdown .md-editor-preview p {
+  @apply leading-relaxed;
+}
+
+.quizMarkdown .md-editor-preview a {
+  @apply text-blue-500 underline;
+}
+
+.quizMarkdown .md-editor-preview figure {
+  max-width: min(calc(100vw - 90px), 700px);
+}
+
+.quizMarkdown {
+  width: 100%;
+}
+
+.quizMarkdown img {
+  max-height: 35vh;
+  margin: auto;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.quizMarkdown.quizChoices .md-editor-preview figure {
+  margin: 0;
+}
+
+.quizMarkdown.quizChoices img {
+  max-height: 15vh;
+  margin: auto;
+}
